@@ -1,0 +1,26 @@
+{
+  "name": "has-date-expired",
+  "version": "1.0.0",
+  "description": "Sane way to know if a date has expired or not.",
+  "main": "index.js",
+  "scripts": {
+    "test": "browserify test/index.js | tap-closer | smokestack | faucet",
+    "test-debug": "budo test/index.js --live"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/watsondg/has-date-expired.git"
+  },
+  "keywords": [
+    "date",
+    "expired",
+    "exceed",
+    "day"
+  ],
+  "author": "Florian Morel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/watsondg/has-date-expired/issues"
+  },
+  "homepage": "https://github.com/watsondg/has-date-expired#readme"
+}
