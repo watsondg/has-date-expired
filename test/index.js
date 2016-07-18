@@ -6,8 +6,10 @@ var hasExpired = require('../index.js');
 test('Previous date test', function(assert) {
     assert.ok(hasExpired('01/01/1970'), 'This date should have expired.');
     assert.ok(hasExpired('06/12/2000'), 'This date should have expired.');
-    assert.ok(hasExpired('6/5/02'), 'This date should have expired. (short m/d/y)');
-    assert.ok(hasExpired('8/21/94'), 'This date should have expired. (short m/d/y)');
+    assert.ok(hasExpired('6/5/02'), 'This date should have expired. (shorthand)');
+    assert.ok(hasExpired('8/21/94'), 'This date should have expired. (shorthand)');
+    assert.ok(hasExpired('6/5/02 2:34:32'), 'This date should have expired. (time)');
+    assert.ok(hasExpired('8/21/94 23:00'), 'This date should have expired. (time)');
     assert.end();
 });
 
@@ -22,8 +24,15 @@ test('Current date test', function(assert) {
 });
 
 test('Future date test', function(assert) {
+    var now = new Date();
+
     assert.notOk(hasExpired('01/01/2020'), 'Future date shouldnt have expired.');
     assert.notOk(hasExpired('06/12/2040'), 'Future date shouldnt have expired.');
+
+    assert.notOk(hasExpired(
+        formatDate(now.getFullYear(), now.getMonth(), now.getDate()) + ' ' + now.getUTCHours() + 1
+    ), 'Future date shouldnt have expired (time).');
+    assert.notOk(hasExpired('06/12/2040 12:00'), 'Future date shouldnt have expired (time).');
     assert.end();
 });
 
