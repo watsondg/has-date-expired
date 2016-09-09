@@ -36,9 +36,9 @@ module.exports = function(date, format) {
     }
 
     var targetDate = new Date(year, month, day);
-    if (hours !== undefined) targetDate.setUTCHours(hours);
-    if (minutes !== undefined) targetDate.setUTCMinutes(minutes);
-    if (seconds !== undefined) targetDate.setUTCSeconds(seconds);
+    if (hours !== undefined) targetDate.setHours(hours);
+    if (minutes !== undefined) targetDate.setMinutes(minutes);
+    if (seconds !== undefined) targetDate.setSeconds(seconds);
     var now = Date.now();
 
     return now > targetDate;
